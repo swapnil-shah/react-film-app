@@ -17,7 +17,7 @@ const TMDB = {
       backdrop_path: "/uExPmkOHJySrbJyJDJylHDqaT58.jpg",
       overview:
         "When an attack on the Kingsman headquarters takes place and a new villain rises, Eggsy and Merlin are forced to work together with the American agency known as the Statesman to save the world.",
-      release_date: "2017-09-20"
+      release_date: "2009-09-20"
     },
     {
       id: 339403,
