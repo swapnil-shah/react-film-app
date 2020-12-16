@@ -7,12 +7,12 @@ function FilmRow(props) {
   }
   return (
     <div className="film-row" onClick={() => handleDetailsClick(props.title)}>
-      <FilmPoster image={props.poster_path} altText={props.title} />
+      <FilmPoster image={props.film.poster_path} altText={props.film.title} />
       <div className="film-summary">
-        <h1>{props.title}</h1>
-        <p>{new Date(props.release_date).getFullYear()}</p>
+        <h1>{props.film.title}</h1>
+        <p>{new Date(props.film.release_date).getFullYear()}</p>
       </div>
-      <Fave />
+      <Fave onFaveToggle={() => props.onFaveToggle(film)} />
     </div>
   )
 }

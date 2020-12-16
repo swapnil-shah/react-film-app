@@ -1,10 +1,8 @@
 import React, { Component } from 'react'
 import FilmRow from './FilmRow'
 
-
 class FilmListing extends Component {
   constructor(props) {
-    console.log(props)
     super(props)
     this.state = {
       filter: "all"
@@ -15,9 +13,16 @@ class FilmListing extends Component {
       filter
     })
   }
-  allFilms = this.props.films.map(film => <FilmRow key={film.id} {...film} />)
   render() {
-    const allActive = this.state.filter === "all" && "is-active"
+    const allFilms = this.props.films.map((film) => {
+      return (
+        <FilmRow
+          film={film}
+          key={film.id}
+          onFaveToggle={() => this.props.onFaveToggle(film)}
+        />
+      )
+    }); const allActive = this.state.filter === "all" && "is-active"
     const favesActive = this.state.filter === "faves" && "is-active"
     return (
       <div className="film-list" >
@@ -32,12 +37,10 @@ class FilmListing extends Component {
             <span className="section-count">0</span>
           </div>
         </div>
-
-        { this.allFilms}
+        { allFilms}
       </div>
     )
   }
-
 }
 
 export default FilmListing;
