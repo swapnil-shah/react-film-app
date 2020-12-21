@@ -1,20 +1,15 @@
 import React from 'react'
 import FilmPoster from './FilmPoster'
 import Fave from './Fave'
-function FilmRow(props) {
-  const handleDetailsClick = (film) => {
-    console.log(`Fetching details for ${film}`)
-  }
+export default function FilmRow(props) {
   return (
-    <div className="film-row" onClick={() => handleDetailsClick(props.title)}>
-      <FilmPoster image={props.film.poster_path} altText={props.film.title} />
+    <div className="film-row" onClick={props.handleDetailsClick}>
+      <FilmPoster posterUrl={props.posterUrl} />
       <div className="film-summary">
-        <h1>{props.film.title}</h1>
-        <p>{new Date(props.film.release_date).getFullYear()}</p>
+        <h1>{props.title}</h1>
+        <p>{new Date(props.releaseDate).getFullYear()}</p>
       </div>
-      <Fave onFaveToggle={() => props.onFaveToggle(film)} />
+      <Fave isFave={props.isFave} onFaveToggle={props.onFaveToggle} />
     </div>
-  )
+  );
 }
-
-export default FilmRow
