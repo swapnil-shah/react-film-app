@@ -1,5 +1,7 @@
+import dotenv from 'dotenv';
+dotenv.config();
 const TMDB = {
-  api_key: "<REPLACE_THIS_WITH_TMDB_API_KEY>",
+  api_key: process.env.REACT_APP_TMDB_API_KEY,
   films: [
     {
       id: 346364,
@@ -40,7 +42,7 @@ const TMDB = {
     {
       id: 381283,
       title: "mother!",
-      poster_path: "/qmi2dsuoyzZdJ0WFZYQazbX8ILj.jpg",
+      poster_path: "/qmi2dsuoyzZdJ0WFZYQazbX8IL.jpg",
       backdrop_path: "/uuQpQ8VDOtVL2IO4y2pR58odkS5.jpg",
       overview:
         "A couple's relationship is tested when uninvited guests arrive at their home, disrupting their tranquil existence.",

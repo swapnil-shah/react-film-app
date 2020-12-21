@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import "./styles.css";
 import FilmListing from './components/FilmListing'
 import FilmDetails from './components/FilmDetails'
@@ -13,6 +13,7 @@ class App extends Component {
       current: {}
     };
   }
+
   handleFaveToggle = (film) => {
     const faves = this.state.faves.slice();
     const filmIndex = faves.indexOf(film);
@@ -29,7 +30,13 @@ class App extends Component {
   };
 
   handleDetailsClick = (film) => {
-    console.log(`Fetching details for ${film.title}`);
+    const url = `https://api.themoviedb.org/3/movie/${film.id}?api_key=${TMDB.api_key}&append_to_response=videos,images&language=en`;
+    fetch(url)
+      .then((response) => {
+        return response.json();
+      }).then((data) => {
+        return data
+      });
     this.setState({ current: film });
   };
   render() {
@@ -42,7 +49,7 @@ class App extends Component {
             onFaveToggle={this.handleFaveToggle}
             handleDetailsClick={this.handleDetailsClick}
           />
-          <FilmDetails films={this.state.current} />
+          <FilmDetails film={this.state.current} />
         </div>
       </div>
     );
