@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import "./styles.css";
 import FilmListing from './components/FilmListing'
 import FilmDetails from './components/FilmDetails'
